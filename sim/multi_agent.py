@@ -237,7 +237,7 @@ def agent(agent_id, all_cooked_time, all_cooked_bw, net_params_queue, exp_queue)
             delay, sleep_time, buffer_size, rebuf, \
             video_chunk_size, next_video_chunk_sizes, \
             end_of_video, video_chunk_remain = \
-                net_env.get_video_chunk(bit_rate)
+                net_env.get_video_chunk(bit_rate) #https://github.com/matvaibhav/pensieve/blob/master/sim/env.py#49
 
             time_stamp += delay  # in ms
             time_stamp += sleep_time  # in ms
@@ -303,7 +303,7 @@ def agent(agent_id, all_cooked_time, all_cooked_bw, net_params_queue, exp_queue)
             log_file.flush()
 
             # report experience to the coordinator
-            if len(r_batch) >= TRAIN_SEQ_LEN or end_of_video:
+            if len(r_batch) >= TRAIN_SEQ_LEN or end_of_video: #TRAIN_SEQ_LEN =100, report after every 100 or end of video.
                 exp_queue.put([s_batch[1:],  # ignore the first chuck
                                a_batch[1:],  # since we don't have the
                                r_batch[1:],  # control over it
