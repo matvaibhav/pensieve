@@ -224,9 +224,9 @@ def agent(agent_id, all_cooked_time, all_cooked_bw, net_params_queue, exp_queue)
         action_vec = np.zeros(A_DIM)
         action_vec[bit_rate] = 1
 
-        s_batch = [np.zeros((S_INFO, S_LEN))]
-        a_batch = [action_vec]
-        r_batch = []
+        s_batch = [np.zeros((S_INFO, S_LEN))] #state
+        a_batch = [action_vec] # action
+        r_batch = []           # reward
         entropy_record = []
 
         time_stamp = 0
